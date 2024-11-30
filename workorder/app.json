@@ -1,0 +1,52 @@
+{
+  
+    "pages": [
+      "pages/login/login",
+      "pages/admin/index/index",
+      "pages/admin/engineers/list/index",
+      "pages/admin/engineers/detail/index",
+      "pages/admin/orders/list/index",
+      "pages/admin/orders/create/index",
+      "pages/admin/orders/assign/index",
+      "pages/admin/statistics/index",
+      "pages/admin/settings/index"
+    ],
+    "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#1989fa",
+      "navigationBarTitleText": "工单系统",
+      "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+      "custom": false,
+      "color": "#666666",
+      "selectedColor": "#1989fa",
+      "backgroundColor": "#f7f8fa",
+      "borderStyle": "white",
+      "list": [
+        {
+          "pagePath": "pages/admin/index/index",
+          "text": "工作台"
+        },
+        {
+          "pagePath": "pages/admin/orders/list/index",
+          "text": "工单管理"
+        },
+        {
+          "pagePath": "pages/admin/statistics/index",
+          "text": "统计"
+        }
+      ]
+    },
+    "usingComponents": {
+      "van-button": "miniprogram_npm/@vant/weapp/button/index",
+      "van-field": "miniprogram_npm/@vant/weapp/field/index",
+      "van-cell": "miniprogram_npm/@vant/weapp/cell/index",
+      "van-cell-group": "miniprogram_npm/@vant/weapp/cell-group/index",
+      "van-tag": "miniprogram_npm/@vant/weapp/tag/index",
+      "van-search": "miniprogram_npm/@vant/weapp/search/index",
+      "van-dropdown-menu": "miniprogram_npm/@vant/weapp/dropdown-menu/index",
+      "van-dropdown-item": "miniprogram_npm/@vant/weapp/dropdown-item/index"
+    },
+    "sitemapLocation": "sitemap.json"
+} 

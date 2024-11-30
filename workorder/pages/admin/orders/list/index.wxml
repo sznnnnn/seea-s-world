@@ -1,0 +1,4 @@
+<!--pages/admin/orders/list/index.wxml-->
+<view class="container">
+  <text>工单列表页面</text>
+</view>

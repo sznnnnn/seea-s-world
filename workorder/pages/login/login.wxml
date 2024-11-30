@@ -1,0 +1,39 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="login-header">
+    <image class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIGZpbGw9IiMxOTg5ZmEiLz4KPHRleHQgeD0iODAiIHk9IjgwIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TE9HTzwvdGV4dD4KPC9zdmc+" mode="aspectFit"/>
+    <text class="title">工程设备报修</text>
+    <text class="subtitle">服务管理平台</text>
+  </view>
+
+  <view class="login-form">
+    <view class="form-item">
+      <text class="label">账号</text>
+      <input 
+        class="input" 
+        placeholder="请输入账号" 
+        value="{{username}}"
+        bindinput="onInput"
+        data-field="username"
+      />
+    </view>
+    
+    <view class="form-item">
+      <text class="label">密码</text>
+      <input 
+        class="input" 
+        placeholder="请输入密码"
+        password 
+        value="{{password}}"
+        bindinput="onInput"
+        data-field="password"
+      />
+    </view>
+
+    <button class="login-btn" bindtap="handleLogin">登录</button>
+  </view>
+
+  <view class="footer">
+    <text class="copyright">© 2024 建友机械</text>
+  </view>
+</view>

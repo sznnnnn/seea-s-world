@@ -1,0 +1,113 @@
+/* 卡片样式 */
+.card {
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding: var(--padding-md);
+  margin-bottom: var(--padding-md);
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 标题样式 */
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  margin-bottom: var(--padding-sm);
+}
+
+.subtitle {
+  font-size: var(--font-size-md);
+  color: var(--text-color-light);
+  margin-bottom: var(--padding-xs);
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background-color: var(--border-color);
+  margin: var(--padding-md) 0;
+}
+
+/* 按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-sm) var(--padding-md);
+  border-radius: 4rpx;
+  font-size: var(--font-size-md);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: var(--warning-color);
+  color: #fff;
+}
+
+/* 标签样式 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: var(--font-size-sm);
+}
+
+.tag-primary {
+  background-color: rgba(25, 137, 250, 0.1);
+  color: var(--primary-color);
+}
+
+.tag-warning {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--warning-color);
+}
+
+/* 列表样式 */
+.list {
+  background-color: #fff;
+}
+
+.list-item {
+  padding: var(--padding-md);
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* 工单卡片样式 */
+.order-card {
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding: var(--padding-md);
+  margin-bottom: var(--padding-md);
+}
+
+.order-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--padding-sm);
+}
+
+.order-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+}
+
+.order-card__content {
+  color: var(--text-color-light);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--padding-sm);
+}
+
+.order-card__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--padding-sm);
+} 

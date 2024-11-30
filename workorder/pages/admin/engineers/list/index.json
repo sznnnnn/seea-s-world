@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "工程师管理",
+  "usingComponents": {
+    "van-search": "/miniprogram_npm/@vant/weapp/search/index",
+    "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index"
+  }
+}

@@ -1,0 +1,202 @@
+<view class="container">
+  <!-- 基础信息部分 -->
+  <view class="section">
+    <view class="section-title">基础信息</view>
+    <view class="repair-form">
+      <!-- 客户名称 -->
+      <view class="form-item">
+        <text class="form-label required">客户名称</text>
+        <input 
+          class="form-input"
+          placeholder="请输入客户名称"
+          value="{{record.customer}}"
+          bindinput="onCustomerInput"
+        />
+      </view>
+
+      <!-- 设备型号 -->
+      <view class="form-item">
+        <text class="form-label required">设备型号</text>
+        <input 
+          class="form-input"
+          placeholder="请输入设备型号"
+          value="{{record.equipment}}"
+          bindinput="onEquipmentInput"
+        />
+      </view>
+
+      <!-- 故障问题 -->
+      <view class="form-item">
+        <text class="form-label">故障问题</text>
+        <textarea 
+          class="form-textarea"
+          placeholder="请描述故障问题"
+          value="{{record.issue}}"
+          bindinput="onIssueInput"
+        ></textarea>
+      </view>
+    </view>
+  </view>
+
+  <!-- 维修记录部分 -->
+  <view class="section">
+    <view class="section-title">维修记录</view>
+    <view class="repair-form">
+      <!-- 机型编号 -->
+      <view class="form-item">
+        <text class="form-label required">机型-编号</text>
+        <view class="model-no-row">
+          <input 
+            class="form-input model-input"
+            placeholder="请输入机型"
+            value="{{record.model}}"
+            bindinput="onModelInput"
+          />
+          <text class="separator">-</text>
+          <input 
+            class="form-input no-input"
+            placeholder="请输入编号"
+            value="{{record.serialNo}}"
+            bindinput="onSerialNoInput"
+          />
+        </view>
+      </view>
+
+      <!-- 设备时间 -->
+      <view class="form-item">
+        <text class="form-label required">设备时间</text>
+        <input 
+          class="form-input"
+          placeholder="请输入设备运行时间"
+          value="{{record.deviceTime}}"
+          bindinput="onDeviceTimeInput"
+        />
+      </view>
+
+      <!-- 服务工程师 -->
+      <view class="form-item">
+        <text class="form-label required">服务工程师</text>
+        <view class="engineers-text">{{record.engineers.join('、')}}</view>
+      </view>
+
+      <!-- 服务车辆 -->
+      <view class="form-item">
+        <text class="form-label required">服务车辆</text>
+        <view class="info-text">{{record.vehicle}}</view>
+      </view>
+
+      <!-- 服务项目 -->
+      <view class="form-item">
+        <text class="form-label required">服务项目</text>
+        <input 
+          class="form-input"
+          placeholder="请输入服务项目"
+          value="{{record.serviceItem}}"
+          bindinput="onServiceItemInput"
+        />
+      </view>
+
+      <!-- 故障排除 -->
+      <view class="form-item">
+        <text class="form-label required">故障排除</text>
+        <textarea 
+          class="form-textarea"
+          placeholder="请描述故障排除情况"
+          value="{{record.faultResolution}}"
+          bindinput="onFaultResolutionInput"
+        ></textarea>
+      </view>
+
+      <!-- 完工时间 -->
+      <view class="form-item">
+        <text class="form-label required">完工时间</text>
+        <picker mode="multiSelector" 
+                value="{{dateTimeIndex}}" 
+                range="{{dateTimeArray}}" 
+                bindchange="onDateTimeChange">
+          <view class="picker-wrap">
+            <text class="{{record.completeTime ? '' : 'placeholder'}}">
+              {{record.completeTime || '请选择完工时间'}}
+            </text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 余留问题 -->
+      <view class="form-item">
+        <text class="form-label required">余留问题</text>
+        <textarea 
+          class="form-textarea"
+          placeholder='如无余留问题请填"无"'
+          value="{{record.remainingIssues}}"
+          bindinput="onRemainingIssuesInput"
+        ></textarea>
+      </view>
+
+      <!-- 结算方式 -->
+      <view class="form-item">
+        <text class="form-label required">结算方式</text>
+        <picker 
+          bindchange="onPaymentChange" 
+          value="{{paymentIndex}}" 
+          range="{{paymentMethods}}"
+          header-text="选择结算方式"
+        >
+          <view class="picker-wrap">
+            <text class="{{record.paymentMethod ? '' : 'placeholder'}}">
+              {{record.paymentMethod || '请选择结算方式'}}
+            </text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 拍照打卡 -->
+      <view class="form-item">
+        <text class="form-label required">拍照打卡</text>
+        <view class="photo-card">
+          <block wx:if="{{record.photos.length}}">
+            <image 
+              class="photo-preview"
+              src="{{record.photos[0]}}"
+              mode="aspectFill"
+              bindtap="previewPhoto"
+            />
+            <view class="photo-info">
+              <text class="photo-time">{{record.photoTime || ''}}</text>
+              <text class="photo-location">{{record.photoLocation || ''}}</text>
+            </view>
+          </block>
+          <view wx:else class="photo-placeholder" bindtap="takePhoto">
+            <view class="photo-placeholder-icon">📷</view>
+            <text class="photo-placeholder-text">点击拍照打卡</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 自动定位 -->
+      <view class="form-item">
+        <text class="form-label required">自动定位</text>
+        <view class="location-wrap" bindtap="getLocation">
+          <text class="{{record.location ? '' : 'placeholder'}}">
+            {{record.location || '点击获取当前位置'}}
+          </text>
+          <text class="refresh-btn">刷新</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <button class="submit-btn" bindtap="submitComplete">确认完工</button>
+  </view>
+
+  <!-- 在页面底部添加 canvas -->
+  <canvas 
+    type="2d"
+    id="watermarkCanvas" 
+    style="width: {{canvasWidth}}px; height: {{canvasHeight}}px; position: fixed; left: -9999px; top: -9999px;"
+  />
+</view> 

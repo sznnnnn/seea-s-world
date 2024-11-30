@@ -1,0 +1,106 @@
+<!--pages/engineer/index.wxml-->
+<view class="container">
+  <!-- 今日任务 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="icon">📅</text>
+      <text>今日任务</text>
+      <text class="count">2个工单</text>
+    </view>
+
+    <view class="order-list">
+      <view class="order-item {{activeOrderId === item.id ? 'active' : ''}}" wx:for="{{todayOrders}}" wx:key="id" bindtap="onOrderTap" bindlongpress="onRejectOrder" data-id="{{item.id}}">
+        <view class="reject-tip">长按可拒绝工单</view>
+        <view class="order-header">
+          <view class="order-no">
+            <text>{{item.orderNo}}</text>
+            <text class="time">预约：{{item.appointTime}}</text>
+          </view>
+          <text class="status {{item.status === 'pending' ? 'pending' : 'processing'}}">
+            {{item.statusText}}
+          </text>
+        </view>
+
+        <view class="order-info">
+          <view class="info-row">
+            <text class="label">客户：</text>
+            <text>{{item.customer}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">设备：</text>
+            <text>{{item.equipment}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">故障：</text>
+            <text>{{item.issue}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">地点：</text>
+            <text>{{item.location}}</text>
+            <text class="copy-btn" catchtap="copyLocation" data-location="{{item.location}}">复制</text>
+          </view>
+        </view>
+
+        <view class="order-footer">
+          <button class="contact-btn" bindtap="makeCall" data-phone="{{item.phone}}">
+            <text class="btn-icon">{{icons.phone}}</text>
+            <text>联系客户</text>
+          </button>
+          <button class="action-btn" bindtap="startOrder" data-id="{{item.id}}" wx:if="{{item.status === 'pending'}}">
+            <text class="btn-icon">{{icons.start}}</text>
+            <text>开始处理</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待办工单 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="icon">📝</text>
+      <text>待办工单</text>
+      <text class="count">2个工单</text>
+    </view>
+
+    <view class="order-list">
+      <view class="order-item" wx:for="{{pendingOrders}}" wx:key="id">
+        <view class="order-header">
+          <text class="order-no">{{item.orderNo}}</text>
+          <text class="status pending">待处理</text>
+        </view>
+
+        <view class="order-info">
+          <view class="info-row">
+            <text class="label">客户：</text>
+            <text>{{item.customer}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">设备：</text>
+            <text>{{item.equipment}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">故障：</text>
+            <text>{{item.issue}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">地点：</text>
+            <text>{{item.location}}</text>
+            <text class="copy-btn" catchtap="copyLocation" data-location="{{item.location}}">复制</text>
+          </view>
+        </view>
+
+        <view class="order-footer">
+          <button class="contact-btn" bindtap="makeCall" data-phone="{{item.phone}}">
+            <text class="btn-icon">{{icons.phone}}</text>
+            <text>联系客户</text>
+          </button>
+          <button class="action-btn" bindtap="startOrder" data-id="{{item.id}}">
+            <text class="btn-icon">{{icons.start}}</text>
+            <text>开始处理</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

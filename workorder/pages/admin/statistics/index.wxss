@@ -1,0 +1,6 @@
+/* pages/admin/statistics/index.wxss */
+.container {
+  padding: var(--spacing-md);
+  background: var(--background-color);
+  min-height: 100vh;
+}

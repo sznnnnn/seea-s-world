@@ -1,0 +1,85 @@
+<!--pages/admin/engineers/list/index.wxml-->
+<view class="container">
+  <!-- 搜索和筛选区域 -->
+  <view class="filter-bar">
+    <van-search
+      value="{{ searchValue }}"
+      placeholder="搜索工程师姓名/电话"
+      bind:change="onSearch"
+      class="search"
+    />
+    <van-dropdown-menu>
+      <van-dropdown-item 
+        value="{{ type }}" 
+        options="{{ typeOptions }}" 
+        bind:change="onTypeChange"
+      />
+      <van-dropdown-item 
+        value="{{ level }}" 
+        options="{{ levelOptions }}" 
+        bind:change="onLevelChange"
+      />
+    </van-dropdown-menu>
+  </view>
+
+  <!-- 工程师列表 -->
+  <view class="engineer-list">
+    <view class="engineer-card" wx:for="{{ engineers }}" wx:key="id">
+      <!-- 工程师基本信息 -->
+      <view class="engineer-header">
+        <view class="engineer-info">
+          <text class="engineer-name">{{ item.name }}</text>
+          <text class="engineer-level">{{ item.level === 'mid' ? '中级技师' : item.level === 'junior' ? '初级技师' : '实习技师' }}</text>
+        </view>
+        <text class="engineer-status {{ item.status }}">
+          {{ item.status === 'free' ? '空闲' : 
+             item.status === 'busy' ? '工作中' :
+             item.status === 'leave' ? '请假' : 
+             item.status === 'rest' ? '休息' : '忙碌' 
+          }}
+        </text>
+      </view>
+
+      <!-- 工程师详细信息 -->
+      <view class="engineer-body">
+        <view class="info-item">
+          <text class="label">专业方向：</text>
+          <text class="value">{{ item.type === 'excavator' ? '挖机' : item.type === 'loader' ? '装载机' : '电工' }}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">联系电话：</text>
+          <text class="value phone" bind:tap="onCopyPhone" data-phone="{{ item.phone }}">{{ item.phone }}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">技能：</text>
+          <view class="skill-tags">
+            <text class="skill-tag" wx:for="{{ item.skills }}" wx:key="*this">
+              {{ item }}
+            </text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="engineer-footer">
+        <van-button 
+          type="info" 
+          size="small" 
+          bind:tap="onViewDetail" 
+          data-id="{{ item.id }}"
+        >查看详情</van-button>
+        <van-button 
+          type="primary" 
+          size="small" 
+          bind:tap="onAssignOrder" 
+          data-id="{{ item.id }}"
+        >分配工单</van-button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view class="empty-tip" wx:if="{{ !engineers.length }}">
+    暂无工程师数据
+  </view>
+</view>

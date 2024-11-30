@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="order-list">
+    <view class="order-item" wx:for="{{grabOrders}}" wx:key="id">
+      <view class="order-header">
+        <view class="order-left">
+          <text class="order-no">{{item.orderNo}}</text>
+          <text class="time">{{item.createTime}}</text>
+        </view>
+        <text class="distance">{{item.distance}}km</text>
+      </view>
+      <view class="order-info">
+        <view class="info-row">
+          <text class="label">客户：</text>
+          <text>{{item.customer}}</text>
+        </view>
+        <view class="info-row">
+          <text class="label">设备：</text>
+          <text>{{item.equipment}}</text>
+        </view>
+        <view class="info-row">
+          <text class="label">故障：</text>
+          <text>{{item.issue}}</text>
+        </view>
+      </view>
+      <view class="order-footer">
+        <button class="grab-btn" bindtap="grabOrder" data-id="{{item.id}}">抢单</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-tip" wx:if="{{!grabOrders.length}}">
+    暂无可抢工单
+  </view>
+</view> 

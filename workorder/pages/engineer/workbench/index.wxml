@@ -1,0 +1,79 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-box">
+      <icon type="search" size="16" color="#999"/>
+      <input 
+        class="search-input"
+        placeholder="搜索客户/订单" 
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearch"
+      />
+    </view>
+  </view>
+
+  <!-- 快捷功能 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="onAddOrder">
+      <text class="action-icon">＋</text>
+      <text class="action-text">添加订单</text>
+    </view>
+  </view>
+
+  <!-- 今日任务 -->
+  <view class="section today-section">
+    <view class="section-header">
+      <view class="header-left">
+        <text class="section-icon">📋</text>
+        <text class="section-title">今日任务</text>
+      </view>
+      <text class="view-all" bindtap="viewAllToday">查看全部</text>
+    </view>
+    <view class="order-list">
+      <view class="order-item" wx:for="{{todayOrders}}" wx:key="id">
+        <view class="order-main">
+          <view class="order-left">
+            <text class="order-time">{{item.appointTime}}</text>
+            <text class="customer">{{item.customer}}</text>
+          </view>
+          <text class="tag {{item.status === 'pending' ? 'tag-warning' : 'tag-primary'}}">
+            {{item.statusText}}
+          </text>
+        </view>
+        <view class="order-brief">
+          <text>{{item.equipment}}</text>
+          <text class="divider">|</text>
+          <text>{{item.issue}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 可抢工单 -->
+  <view class="section grab-section">
+    <view class="section-header">
+      <view class="header-left">
+        <text class="section-icon">🔔</text>
+        <text class="section-title">可抢工单</text>
+      </view>
+      <text class="view-all" bindtap="viewAllGrab">查看全部</text>
+    </view>
+    <view class="order-list">
+      <view class="order-item" wx:for="{{grabOrders}}" wx:key="id">
+        <view class="order-main">
+          <view class="order-left">
+            <text class="customer">{{item.customer}}</text>
+            <text class="distance">{{item.distance}}km</text>
+          </view>
+          <button class="grab-btn" bindtap="grabOrder" data-id="{{item.id}}">抢单</button>
+        </view>
+        <view class="order-brief">
+          <text>{{item.equipment}}</text>
+          <text class="divider">|</text>
+          <text>{{item.issue}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

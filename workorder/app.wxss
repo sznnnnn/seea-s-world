@@ -1,0 +1,88 @@
+/**app.wxss**/
+@import './styles/variables.wxss';
+@import './styles/common.wxss';
+
+page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size-md);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: var(--padding-md);
+}
+
+/* 通用样式类 */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+.text-danger {
+  color: var(--danger-color);
+}
+
+.text-light {
+  color: var(--text-color-light);
+}
+
+/* 布局相关 */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* 间距相关 */
+.margin-xs {
+  margin: var(--padding-xs);
+}
+
+.margin-sm {
+  margin: var(--padding-sm);
+}
+
+.margin-md {
+  margin: var(--padding-md);
+}
+
+.margin-lg {
+  margin: var(--padding-lg);
+}
+
+.padding-xs {
+  padding: var(--padding-xs);
+}
+
+.padding-sm {
+  padding: var(--padding-sm);
+}
+
+.padding-md {
+  padding: var(--padding-md);
+}
+
+.padding-lg {
+  padding: var(--padding-lg);
+} 
